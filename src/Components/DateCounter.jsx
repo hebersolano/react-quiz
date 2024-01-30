@@ -1,5 +1,7 @@
 import { useReducer, useState } from "react";
 
+const initState = { count: 0, step: 1 };
+
 function reducer(state, action) {
   console.log(state, action);
   switch (action.type) {
@@ -12,7 +14,9 @@ function reducer(state, action) {
     case "set-step":
       return { ...state, step: Number(action.payload) };
     case "reset":
-      return { count: 0, step: 1 };
+      return initState;
+    default:
+      throw new Error("Unknown action");
   }
   // if (action.type == "dec") return { ...state, count: state.count - 1 };
   // if (action.type == "inc") return { ...state, count: state.count + 1 };
@@ -20,8 +24,6 @@ function reducer(state, action) {
   // if (action.type == "set-step") return { ...state, step: action.payload };
   // if (action.type == "reset") return { count: 0, step: 1 };
 }
-
-const initState = { count: 0, step: 1 };
 
 function DateCounter() {
   // const [count, setCount] = useState(0);
