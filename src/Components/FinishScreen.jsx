@@ -1,4 +1,7 @@
-function FinishScreen({ points, maxPoints, highScore, dispatch }) {
+import { useQuizState } from "../contexts/quizContext";
+
+function FinishScreen() {
+  const { points, maxPoints, highScore, dispatch } = useQuizState();
   const percentage = Math.floor((points / maxPoints) * 100);
 
   function handleClick() {
@@ -16,7 +19,8 @@ function FinishScreen({ points, maxPoints, highScore, dispatch }) {
   return (
     <>
       <p className="result">
-        <span>{emoji}</span> Your score <strong>{points}</strong> out of <strong>{maxPoints}</strong> ({percentage}%)
+        <span>{emoji}</span> Your score <strong>{points}</strong> out of{" "}
+        <strong>{maxPoints}</strong> ({percentage}%)
       </p>
       <p className="highscore">Highscore: {highScore} points</p>
       <button className="btn btn-ui" onClick={handleClick}>

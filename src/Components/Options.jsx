@@ -1,6 +1,10 @@
-function Options({ question, dispatch, answer }) {
+import { useQuizState } from "../contexts/quizContext";
+
+function Options() {
+  const { question, dispatch, answer } = useQuizState();
   const isAnswer = answer !== null;
   const options = question.options;
+
   return (
     <div className="options">
       {options.map((option, index) => {

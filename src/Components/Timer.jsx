@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useQuizState } from "../contexts/quizContext";
 
 function pad(d) {
   return d < 10 ? "0" + d.toString() : d.toString();
 }
 
-function Timer({ dispatch, secondsRemaining }) {
+function Timer() {
+  const { dispatch, secondsRemaining } = useQuizState();
   const [seconds, setSeconds] = useState(secondsRemaining);
   const min = pad(Math.trunc(seconds / 60));
   const secs = pad(seconds % 60);
